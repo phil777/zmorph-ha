@@ -12,7 +12,7 @@ jobs:
     name: Validate the repository with the HACS action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7.0.1
+      - uses: actions/checkout@v7
       # Checks hacs.json, the manifest keys HACS needs, the release assets and
       # the readme. The HACS store submission runs the same validation.
       - uses: "hacs/action@22.5.0"
