@@ -1,0 +1,20 @@
+name: HACS
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "12 3 * * 6"
+
+jobs:
+  hacs:
+    name: Validate the repository with the HACS action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      # Checks hacs.json, the manifest keys HACS needs, the release assets and
+      # the readme. The HACS store submission runs the same validation.
+      - uses: "hacs/action@22.5.0"
+        with:
+          category: "integration"

@@ -1,0 +1,79 @@
+[project]
+name = "zmorph-ha"
+version = "0.1.0"
+description = "Home Assistant custom integration for Zmorph machines (HACS)"
+requires-python = ">=3.14.2"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+asyncio_default_test_loop_scope = "function"
+
+[tool.ruff]
+target-version = "py314"
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+  "ARG",
+  "B",
+  "C4",
+  "DTZ",
+  "E",
+  "F",
+  "I",
+  "ICN",
+  "LOG",
+  "N",
+  "PERF",
+  "PTH",
+  "RET",
+  "RUF",
+  "S",
+  "SIM",
+  "TRY",
+  "UP",
+  "W",
+]
+ignore = [
+  "E501",   # the formatter owns line length
+  "N818",   # HA names errors after the failure: UpdateFailed, ZMorphOffline
+  "RET504", # HA reads better with a named result before a return
+  "RUF012", # class attributes of entity descriptions are never mutated
+  "S101",   # assert is the language of tests
+  "TRY003", # long messages on exceptions are how HA explains a failure
+  "TRY300", # the return of a try is often the happy path, not the else
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Home Assistant calls these functions with a fixed signature, so a framework
+# argument can be unused by design.
+"custom_components/*/*.py" = ["ARG001", "ARG002", "ARG004"]
+"tests/*" = ["ARG001", "DTZ", "S101", "S106"]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+
+[tool.mypy]
+python_version = "3.14"
+mypy_path = "."
+namespace_packages = true
+explicit_package_bases = true
+# strict = true is the "strict-typing" rule of the Home Assistant quality
+# scale. The integration passes it; the tests keep their own looser rules.
+strict = true
+show_error_codes = true
+exclude = "^(build|dist|\\.venv)"
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+disallow_subclassing_any = false
+disallow_untyped_decorators = false
+
+[[tool.mypy.overrides]]
+module = "pytest_homeassistant_custom_component.*"
+ignore_missing_imports = true

@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "17 4 * * 6"
+
+jobs:
+  quality:
+    name: Lint and type check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.1.0
+        with:
+          python-version: "3.14"
+          cache: pip
+      - run: python -m pip install --upgrade pip
+      - run: pip install -r requirements_dev.txt
+      - name: Ruff
+        run: ruff check custom_components tests script
+      - name: Ruff format
+        run: ruff format --check custom_components tests script
+      - name: mypy (strict)
+        run: mypy custom_components tests
+      - name: Translations are in sync with strings.json
+        run: python script/sync_translations.py --check
+
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.1.0
+        with:
+          python-version: "3.14"
+          cache: pip
+      - run: python -m pip install --upgrade pip
+      - run: pip install -r requirements_dev.txt
+      - name: pytest
+        run: >-
+          pytest -q --cov=custom_components.zmorph --cov-report=term-missing
+          --cov-fail-under=95

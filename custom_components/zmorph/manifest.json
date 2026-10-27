@@ -1,0 +1,14 @@
+{
+  "domain": "zmorph",
+  "name": "Zmorph",
+  "codeowners": [
+    "@phil777"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/phil777/zmorph-ha",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/phil777/zmorph-ha/issues",
+  "requirements": [],
+  "version": "0.2.0"
+}

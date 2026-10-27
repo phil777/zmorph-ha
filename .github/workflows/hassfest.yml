@@ -1,0 +1,19 @@
+name: Hassfest
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "33 5 * * 0"
+
+jobs:
+  hassfest:
+    name: Validate the integration with hassfest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # The hassfest action runs in a container and validates manifest.json,
+      # the config flow, icons and translations. It fails the build on any
+      # problem, which is what the HACS store checks too.
+      - uses: "home-assistant/actions/hassfest@master"

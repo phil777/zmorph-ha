@@ -1,0 +1,12 @@
+# Development environment for the Zmorph integration.
+#
+# Both pins below belong together: pytest-homeassistant-custom-component
+# extracts the test helpers of one exact Home Assistant release.
+# 0.13.375 == Home Assistant 2026.10.4
+homeassistant==2026.10.4
+pytest-homeassistant-custom-component==0.13.375
+
+pytest
+pytest-asyncio
+ruff
+mypy

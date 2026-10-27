@@ -1,0 +1,43 @@
+name: Bug report
+description: Something the integration does not do right
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before you open an issue: **Settings → Devices & services → Zmorph →
+        three-dot menu → Download diagnostics**, and check that the API key in
+        it is redacted. Attach the file. It carries the machine model, firmware
+        and the last answer the integration got.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      placeholder: |
+        Expected: the progress sensor follows the job.
+        What I see: the sensor stays unknown, and the log says …
+    validations:
+      required: true
+  - type: textarea
+    id: machine
+    attributes:
+      label: Machine and firmware
+      description: Model (Fab, i500, VX), firmware version, and how it is connected (Ethernet or USB).
+    validations:
+      required: true
+  - type: textarea
+    id: versions
+    attributes:
+      label: Versions
+      description: Home Assistant version, HACS version, and this integration's version.
+      placeholder: Home Assistant 2026.10.4, HACS 2.x, Zmorph 0.1.0
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: |
+        Turn on `logger: logs: custom_components.zmorph: debug`, reproduce, then
+        paste the lines here. They are formatted automatically; no backticks.
+      render: shell

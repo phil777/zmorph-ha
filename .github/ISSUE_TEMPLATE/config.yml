@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Home Assistant community
+    url: https://community.home-assistant.io/c/custom-integrations/
+    about: General questions about custom integrations and HACS.

@@ -1,0 +1,16 @@
+name: Support
+description: A question about setup or behaviour
+labels: [question]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Read the [README](https://github.com/YOUR-GITHUB-USERNAME/zmorph-ha#readme)
+        and [docs/DEVICE_API.md](https://github.com/YOUR-GITHUB-USERNAME/zmorph-ha/blob/main/docs/DEVICE_API.md)
+        first: whether your machine is supported at all is usually answered there.
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+    validations:
+      required: true

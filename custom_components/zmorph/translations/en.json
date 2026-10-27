@@ -1,0 +1,123 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Device is already configured",
+      "reconfigure_successful": "Reconfiguration was successful",
+      "unique_id_mismatch": "The machine at that address is not the machine of this entry."
+    },
+    "error": {
+      "not_a_zmorph": "Something answered at that address, but it is not a Zmorph controller."
+    },
+    "step": {
+      "reconfigure": {
+        "data": {
+          "host": "Host",
+          "port": "Port"
+        },
+        "data_description": {
+          "host": "The new name or address of the same machine.",
+          "port": "The port of the machine web service."
+        },
+        "title": "Reconfigure your Zmorph machine"
+      },
+      "user": {
+        "data": {
+          "host": "Host",
+          "port": "Port"
+        },
+        "data_description": {
+          "host": "The name or address of the machine on your network. The firmware of the Zmorph Fab normally answers to the name fab.",
+          "port": "The port of the machine web service. Leave 80 unless you know it listens somewhere else."
+        },
+        "description": "The machine does not have to be switched on. Home Assistant probes it slowly while it stays off, and picks up again as soon as it answers.",
+        "title": "Connect to your Zmorph machine"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "probe_now": {
+        "name": "Probe now"
+      }
+    },
+    "sensor": {
+      "bed_target": {
+        "name": "Bed target"
+      },
+      "bed_temperature": {
+        "name": "Bed temperature"
+      },
+      "bytes_printed": {
+        "name": "Bytes printed"
+      },
+      "bytes_total": {
+        "name": "File size"
+      },
+      "next_probe": {
+        "name": "Next probe"
+      },
+      "nozzle_target": {
+        "name": "Nozzle target"
+      },
+      "nozzle_temperature": {
+        "name": "Nozzle temperature"
+      },
+      "position_x": {
+        "name": "X position"
+      },
+      "position_y": {
+        "name": "Y position"
+      },
+      "position_z": {
+        "name": "Z position"
+      },
+      "probe_interval": {
+        "name": "Probe wait"
+      },
+      "progress": {
+        "name": "Progress"
+      },
+      "state": {
+        "name": "State",
+        "state": {
+          "idle": "Idle",
+          "offline": "Offline",
+          "printing": "Printing",
+          "unknown": "Unknown"
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "invalid_probe_interval": {
+      "message": "The probe interval must be between 5 seconds and 24 hours."
+    },
+    "max_below_min_probe_interval": {
+      "message": "The maximum probe interval must not be shorter than the minimum."
+    },
+    "not_a_zmorph": {
+      "message": "{host} answered, but not with G-code. Check the address of the machine."
+    },
+    "offline": {
+      "message": "{host} did not answer."
+    }
+  },
+  "options": {
+    "error": {
+      "max_below_min": "The maximum wait must be at least as long as the first wait."
+    },
+    "step": {
+      "init": {
+        "data": {
+          "max_probe_interval": "Longest wait between probes",
+          "min_probe_interval": "Wait between probes"
+        },
+        "data_description": {
+          "max_probe_interval": "The wait stops growing here, however long the machine stays off. The default is 1200 seconds, 20 minutes.",
+          "min_probe_interval": "How long Home Assistant waits after a probe that reached nothing, doubled every silent probe after that. The default is 15 seconds: 15, 30, 60, 120, up to the maximum. The moment the machine answers, it goes back to this value."
+        },
+        "title": "Probing the machine"
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "entity": {
+    "button": {
+      "probe_now": {
+        "default": "mdi:access-point-refresh"
+      }
+    },
+    "sensor": {
+      "bed_target": {
+        "default": "mdi:thermostat"
+      },
+      "bed_temperature": {
+        "default": "mdi:heat-wave"
+      },
+      "bytes_printed": {
+        "default": "mdi:file-arrow-up-outline"
+      },
+      "bytes_total": {
+        "default": "mdi:file-outline"
+      },
+      "next_probe": {
+        "default": "mdi:timer-sand"
+      },
+      "nozzle_target": {
+        "default": "mdi:thermostat"
+      },
+      "nozzle_temperature": {
+        "default": "mdi:thermometer-lines"
+      },
+      "position_x": {
+        "default": "mdi:axis-x-arrow"
+      },
+      "position_y": {
+        "default": "mdi:axis-y-arrow"
+      },
+      "position_z": {
+        "default": "mdi:axis-z-arrow"
+      },
+      "probe_interval": {
+        "default": "mdi:timer-cog-outline"
+      },
+      "progress": {
+        "default": "mdi:progress-clock"
+      },
+      "state": {
+        "default": "mdi:printer-3d",
+        "state": {
+          "idle": "mdi:sleep",
+          "printing": "mdi:printer-3d-nozzle-heat-outline",
+          "offline": "mdi:printer-off",
+          "unknown": "mdi:help-circle-outline"
+        }
+      }
+    }
+  }
+}
